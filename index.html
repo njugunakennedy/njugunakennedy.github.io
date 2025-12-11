@@ -79,7 +79,7 @@
     /* --- General Layout --- */
     section {
       padding: 60px 20px;
-      max-width: 1000px;
+      max-width: 1100px; /* Slightly wider for images */
       margin: auto;
     }
 
@@ -102,27 +102,32 @@
 
     p {
       color: var(--text-gray);
-      text-align: center;
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.1rem;
+      font-size: 1rem;
+    }
+    
+    .about-text {
+        text-align: center;
+        max-width: 700px;
+        margin: 0 auto;
+        font-size: 1.1rem;
     }
 
     /* --- Projects Grid --- */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
     }
 
     .project-card {
       background: var(--bg-card);
-      padding: 30px;
       border-radius: 12px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(255,255,255,0.05);
       position: relative;
-      overflow: hidden;
+      overflow: hidden; /* Ensures image corners stay rounded */
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card:hover {
@@ -131,21 +136,34 @@
       border-color: var(--primary);
     }
 
-    .project-icon {
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 15px;
+    /* New Image Styles */
+    .project-thumb {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        object-position: top; /* Focuses on top of screenshots */
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    /* Content wrapper to add padding back */
+    .card-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
     }
 
     .project-card h3 {
       margin: 0 0 10px;
       font-size: 1.3rem;
+      color: var(--text-light);
     }
 
     .project-card p {
       text-align: left;
       font-size: 0.95rem;
       margin-bottom: 20px;
+      flex-grow: 1; /* Pushes button to bottom */
     }
 
     .btn {
@@ -158,6 +176,7 @@
       border-radius: 6px;
       font-weight: 600;
       transition: all 0.3s ease;
+      align-self: flex-start;
     }
 
     .btn:hover {
@@ -186,21 +205,29 @@
 <body>
 
   <header>
-    <img src="https://ui-avatars.com/api/?name=Njuguna+Kennedy&background=4361ee&color=fff&size=200" alt="Njuguna Kennedy" class="profile-img">
+    <img src="profile.jpg" alt="Njuguna Kennedy" class="profile-img">
     
     <h1>Njuguna Kennedy</h1>
     <p class="subtitle">Data Analyst | AI Developer | Sports Analytics Specialist</p>
     
     <div class="social-links">
       <a href="https://github.com/njugunakennedy" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
-      <a href="mailto:your-email@example.com"><i class="fas fa-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/kennjuguna/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=njugunakennedy5@gmail.com" target="_blank" style="text-decoration: none; color: white; display: inline-flex; align-items: center; gap: 10px; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
+    
+        <i class="fas fa-envelope" style="font-size: 1.1rem;"></i>
+        
+        <span style="font-size: 0.85rem; font-weight: 300; letter-spacing: 1px; font-family: 'Poppins', sans-serif;">
+            njugunakennedy5@gmail.com
+        </span>
+    
+    </a>
     </div>
   </header>
 
   <section id="about">
     <h2>About Me</h2>
-    <p>
+    <p class="about-text">
       I am a passionate data analyst and AI developer specializing in transforming complex data into actionable insights. 
       My expertise lies in <strong>Sports Technology</strong>, machine learning prediction models, and building scalable web applications.
     </p>
@@ -211,31 +238,37 @@
     <div class="projects-grid">
       
       <div class="project-card">
-        <div class="project-icon"><i class="fas fa-car"></i></div>
-        <h3>Car Price Prediction</h3>
-        <p>A Machine Learning model using Random Forest to predict vehicle prices based on historical market data.</p>
-        <a href="https://github.com/njugunakennedy/Car-price" class="btn" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
+        <img src="CarPricePredictionModel.jpg" alt="Car Price Prediction Interface" class="project-thumb">
+        <div class="card-content">
+            <h3>Car Price Prediction</h3>
+            <p>A web-based machine learning tool that estimates used car market values. Features a clean UI for inputting vehicle specs and uses a Random Forest Regressor for high-accuracy price forecasting.</p>
+            <a href="https://github.com/njugunakennedy/Car-price" class="btn" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
 
       <div class="project-card">
-        <div class="project-icon"><i class="fas fa-plane-departure"></i></div>
-        <h3>Flight Fare Prediction</h3>
-        <p>An AI system designed to analyze flight trends and predict future fare costs for optimal booking timing.</p>
-        <a href="https://github.com/njugunakennedy/Flight-fare" class="btn" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
+        <img src="FlightFarePrediction.jpg" alt="Flight Fare Prediction Banner" class="project-thumb">
+        <div class="card-content">
+            <h3>Flight Fare Prediction</h3>
+            <p>An intelligent system designed to analyze flight trends and predict future fare costs. This project utilizes historical flight data to help users identify the optimal time to book travel.</p>
+            <a href="https://github.com/njugunakennedy/Flight-fare" class="btn" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
 
       <div class="project-card">
-        <div class="project-icon"><i class="fas fa-futbol"></i></div>
-        <h3>Sports Analytics Dashboard</h3>
-        <p>Upcoming project focusing on player performance metrics and match outcome predictions.</p>
-        <a href="#" class="btn" style="opacity:0.6; cursor: not-allowed;">Coming Soon</a>
+        <img src="sports.jpg" alt="Sports Analytics Radar Chart" class="project-thumb" style="object-fit: contain; background: #0b1120;">
+        <div class="card-content">
+            <h3>Sports Performance DNA</h3>
+            <p>Advanced player profiling using multi-dimensional radar charts. Visualizes metrics like Expected Goals (xG), Progressive Carries, and Playmaking to assess player suitability for tactical roles.</p>
+            <a href="https://github.com/njugunakennedy/RAISS-Sports-Analytics-Dashboard" class="btn">View Demo <i class="fas fa-arrow-right"></i></a>
+        </div>
       </div>
 
     </div>
   </section>
 
   <footer>
-    <p>&copy; 2024 Njuguna Kennedy. Built with passion and code.</p>
+    <p>&copy; 2025 Njuguna Kennedy. Built with passion and code.</p>
   </footer>
 
 </body>

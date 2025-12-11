@@ -40,6 +40,7 @@
       width: 160px;
       height: 160px;
       object-fit: cover;
+      object-position: top;
       border-radius: 50%;
       border: 4px solid var(--primary);
       box-shadow: 0 0 20px rgba(67, 97, 238, 0.4);
@@ -63,12 +64,15 @@
 
     .social-links {
       margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
     }
 
     .social-links a {
       color: var(--text-light);
       font-size: 1.5rem;
-      margin: 0 15px;
       transition: color 0.3s ease;
     }
 
@@ -79,7 +83,7 @@
     /* --- General Layout --- */
     section {
       padding: 60px 20px;
-      max-width: 1100px; /* Slightly wider for images */
+      max-width: 1200px; /* Increased width to fit 4 items better */
       margin: auto;
     }
 
@@ -100,16 +104,12 @@
       border-radius: 2px;
     }
 
-    p {
-      color: var(--text-gray);
-      font-size: 1rem;
-    }
-    
     .about-text {
         text-align: center;
         max-width: 700px;
         margin: 0 auto;
         font-size: 1.1rem;
+        color: var(--text-gray);
     }
 
     /* --- Projects Grid --- */
@@ -125,7 +125,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       border: 1px solid rgba(255,255,255,0.05);
       position: relative;
-      overflow: hidden; /* Ensures image corners stay rounded */
+      overflow: hidden;
       display: flex;
       flex-direction: column;
     }
@@ -136,16 +136,14 @@
       border-color: var(--primary);
     }
 
-    /* New Image Styles */
     .project-thumb {
         width: 100%;
         height: 200px;
         object-fit: cover;
-        object-position: top; /* Focuses on top of screenshots */
+        object-position: top;
         border-bottom: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* Content wrapper to add padding back */
     .card-content {
         padding: 25px;
         flex-grow: 1;
@@ -162,8 +160,9 @@
     .project-card p {
       text-align: left;
       font-size: 0.95rem;
+      color: var(--text-gray);
       margin-bottom: 20px;
-      flex-grow: 1; /* Pushes button to bottom */
+      flex-grow: 1;
     }
 
     .btn {
@@ -194,10 +193,10 @@
       margin-top: 60px;
     }
 
-    /* --- Mobile Tweak --- */
     @media (max-width: 600px) {
       h1 { font-size: 2rem; }
       .profile-img { width: 120px; height: 120px; }
+      .social-links { flex-direction: column; gap: 15px; }
     }
   </style>
 </head>
@@ -212,16 +211,14 @@
     
     <div class="social-links">
       <a href="https://github.com/njugunakennedy" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://www.linkedin.com/in/kennjuguna/" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+      
       <a href="https://mail.google.com/mail/?view=cm&fs=1&to=njugunakennedy5@gmail.com" target="_blank" style="text-decoration: none; color: white; display: inline-flex; align-items: center; gap: 10px; transition: opacity 0.3s ease;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">
-    
         <i class="fas fa-envelope" style="font-size: 1.1rem;"></i>
-        
         <span style="font-size: 0.85rem; font-weight: 300; letter-spacing: 1px; font-family: 'Poppins', sans-serif;">
             njugunakennedy5@gmail.com
         </span>
-    
-    </a>
+      </a>
     </div>
   </header>
 
@@ -260,7 +257,16 @@
         <div class="card-content">
             <h3>Sports Performance DNA</h3>
             <p>Advanced player profiling using multi-dimensional radar charts. Visualizes metrics like Expected Goals (xG), Progressive Carries, and Playmaking to assess player suitability for tactical roles.</p>
-            <a href="https://github.com/njugunakennedy/RAISS-Sports-Analytics-Dashboard" class="btn">View Demo <i class="fas fa-arrow-right"></i></a>
+            <a href="#" class="btn" style="cursor: default; opacity: 0.7;">View Demo</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="pollutant.png" alt="Pollutant Predictor" class="project-thumb">
+        <div class="card-content">
+            <h3>Sustainable Pollutant Predictor</h3>
+            <p>An environmental data science initiative using Machine Learning to predict pollutant levels. Designed to support sustainability goals by forecasting environmental impact and air quality trends.</p>
+            <a href="https://github.com/njugunakennedy/sustainable-pollutant-predictor" class="btn" target="_blank">View Code <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
 
